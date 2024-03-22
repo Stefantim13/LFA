@@ -12,35 +12,24 @@ ofstream fout("output.out");
 
 
 vector <int> v;
-map<int, vector <pair <int, char>>> q, qq;
-map <int, bool> f, viz;
-/*
-void vizitat(int nod, int stare_actuala)
-{
-    viz[nod] = 1;
-    for(auto x: qq[nod])
-    {
-        if(x.second == '0' && !viz[x.first])
-        {
-            for(auto y: q[x.second])
-                q[stare_actuala].push_back(y);
-            vizitat(x.first, stare_actuala);
-        }
-    }
-}
-*/
+map<int, vector <pair <int, char>>> q;
+map <int, bool> f;
+map <int, int> viz;
+
+
 void parcurgere(string cuvant, int poz, int stare_actuala)
 {
+    viz.clear();
     int k = 1;
-    queue <pair <int,int> > qu;
+    stack <pair <int,int> > qu;
     qu.push({stare_actuala, poz});
     while(!qu.empty())
     {
-        pair <int,int> nod_curent = qu.front();
+        pair <int,int> nod_curent = qu.top();
         qu.pop();
         if(nod_curent.second == cuvant.length() && f[nod_curent.first])
         {
-            cout << "DA\n";
+            fout << "DA\n";
             return;
         }
 
@@ -48,11 +37,17 @@ void parcurgere(string cuvant, int poz, int stare_actuala)
         {
             if(nod_curent.second < cuvant.length() && vec.second == cuvant[nod_curent.second])
             {
+                k++;
                 qu.push({vec.first, nod_curent.second + 1});
+            }
+            if(nod_curent.second <= cuvant.length() && vec.second == '0' && viz[vec.first] != k)
+            {
+                viz[nod_curent.first] = k;
+                qu.push({vec.first, nod_curent.second});
             }
         }
     }
-    cout << "NU\n";
+    fout << "NU\n";
 
 }
 
@@ -74,9 +69,7 @@ int main()
     for(int i = 0; i < m; ++i)
     {
         fin >> x >> y >> l;
-        qq[x].push_back({y,l});
-        if(l != '0')
-            q[x].push_back({y,l});
+        q[x].push_back({y,l});
     }
 
     fin >> s;
@@ -86,28 +79,6 @@ int main()
         fin >> x;
         f[x] = true;
     }
-
-    /*
-    for(int i = 0; i < n; ++i)
-    {
-        if(q[v[i]].size() != 0)
-        {
-            for(auto z: q[v[i]])
-            {
-                viz.clear();
-                vizitat(z.second, z.second);
-            }
-        }
-    }
-
-    for(int i = 0; i < n; ++i)
-    {
-        for(auto z: q[v[i]])
-        {
-            cout << v[i] << " " << z.first << " " << z.second << "\n";
-        }
-    }
-    */
 
 
     fin >> nc;

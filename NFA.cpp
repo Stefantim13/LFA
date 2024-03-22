@@ -37,7 +37,7 @@ void parcurgere(string cuvant, int poz, int stare_actuala)
         qu.pop();
         if(nod_curent.second == cuvant.length() && f[nod_curent.first])
         {
-            cout << "DA\n";
+            fout << "DA\n";
             return;
         }
 
@@ -49,7 +49,7 @@ void parcurgere(string cuvant, int poz, int stare_actuala)
             }
         }
     }
-    cout << "NU\n";
+    fout << "NU\n";
 
 }
 
