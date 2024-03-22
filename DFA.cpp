@@ -40,7 +40,7 @@ void parcurgere(string cuvant, int poz, int stare_actuala)
             if(x.second == cuvant[poz])
                 return parcurgere(cuvant, poz + 1, x.first);
         }
-       fout << "NU\n";
+        fout << "NU\n";
         return;
     }
     else
