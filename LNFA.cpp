@@ -88,16 +88,16 @@ int main()
 
     for(int i = 0; i < n; ++i)
     {
-        if(q[i].size() != 0)
+        if(q[v[i]].size() != 0)
         {
-            for(auto z: q[i])
+            for(auto z: q[v[i]])
             {
                 viz.clear();
                 vizitat(z.second, z.second);
             }
         }
     }
-    
+
     fin >> nc;
     for(int t = 0 ; t < nc; ++t)
     {
