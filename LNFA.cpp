@@ -14,6 +14,7 @@ ofstream fout("output.out");
 vector <int> v;
 map<int, vector <pair <int, char>>> q, qq;
 map <int, bool> f, viz;
+/*
 void vizitat(int nod, int stare_actuala)
 {
     viz[nod] = 1;
@@ -27,7 +28,7 @@ void vizitat(int nod, int stare_actuala)
         }
     }
 }
-
+*/
 void parcurgere(string cuvant, int poz, int stare_actuala)
 {
     int k = 1;
@@ -86,6 +87,7 @@ int main()
         f[x] = true;
     }
 
+    /*
     for(int i = 0; i < n; ++i)
     {
         if(q[v[i]].size() != 0)
@@ -97,6 +99,16 @@ int main()
             }
         }
     }
+
+    for(int i = 0; i < n; ++i)
+    {
+        for(auto z: q[v[i]])
+        {
+            cout << v[i] << " " << z.first << " " << z.second << "\n";
+        }
+    }
+    */
+
 
     fin >> nc;
     for(int t = 0 ; t < nc; ++t)
