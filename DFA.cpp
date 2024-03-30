@@ -31,6 +31,7 @@ vector <int> v;
 map<int, vector <pair <int, char>>> q;
 map <int, bool> f;
 
+
 void parcurgere(string cuvant, int poz, int stare_actuala)
 {
     if(poz < cuvant.length())
